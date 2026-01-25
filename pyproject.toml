@@ -1,0 +1,14 @@
+[project]
+name = "predictstock-aiservice"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.128.0",
+    "fastapi-users[luricisme]>=15.0.3",
+    "langchain-community>=0.4.1",
+    "langchain-google-genai>=4.2.0",
+    "python-dotenv>=1.2.1",
+    "uvicorn[standard]>=0.40.0",
+]
