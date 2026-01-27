@@ -1187,6 +1187,7 @@ dependencies = [
     { name = "fastapi-users" },
     { name = "langchain-community" },
     { name = "langchain-google-genai" },
+    { name = "pydantic-settings" },
     { name = "python-dotenv" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -1197,6 +1198,7 @@ requires-dist = [
     { name = "fastapi-users", extras = ["luricisme"], specifier = ">=15.0.3" },
     { name = "langchain-community", specifier = ">=0.4.1" },
     { name = "langchain-google-genai", specifier = ">=4.2.0" },
+    { name = "pydantic-settings", specifier = ">=2.12.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.40.0" },
 ]

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1.ai import router as ai_router
+from app.api.v1 import router as v1_router
 from app.core.config import settings
 from app.core.logging import setup_logging
 
@@ -11,7 +11,7 @@ def create_app() -> FastAPI:
         version=settings.APP_VERSION,
     )
 
-    app.include_router(ai_router, prefix="/api/v1")
+    app.include_router(v1_router, prefix="/api/v1")
 
     return app
 
