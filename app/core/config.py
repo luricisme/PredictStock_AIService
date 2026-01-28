@@ -35,6 +35,11 @@ class Settings(BaseSettings):
     # =========================
     SECRET_KEY: str = "change-me"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    
+    # =========================
+    # CALL APIS
+    # =========================
+    MARKET_SERVICE_API: str = "http://localhost:3001/api/v1"
 
     # =========================
     # Pydantic Settings Config

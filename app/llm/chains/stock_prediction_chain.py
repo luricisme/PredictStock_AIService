@@ -1,9 +1,11 @@
 from langchain_core.output_parsers import PydanticOutputParser
-from app.schemas.ai import StockPredictResponse
 from app.llm.prompts.stock_prompt import STOCK_PROMPT
 from app.llm.models.llm import get_llm
+from app.schemas.llm import LLMTrendOutput
 
-parser = PydanticOutputParser(pydantic_object=StockPredictResponse)
+parser = PydanticOutputParser(
+    pydantic_object=LLMTrendOutput
+)
 
 prompt = STOCK_PROMPT.partial(
     format_instructions=parser.get_format_instructions()
@@ -11,4 +13,4 @@ prompt = STOCK_PROMPT.partial(
 
 llm = get_llm()
 
-stock_sentiment_chain = prompt | llm | parser
+stock_prediction_chain = prompt | llm | parser

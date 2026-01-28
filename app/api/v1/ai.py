@@ -1,9 +1,15 @@
+# app/api/v1/ai.py
 from fastapi import APIRouter
-from app.schemas.ai import StockPredictRequest, StockPredictResponse
-from app.services.ai_service import predict_stock
+from app.schemas.ai import StockPredictResponse
+from app.services.ai_service import AIService
 
-router = APIRouter(prefix="/ai", tags=["AI"])
+router = APIRouter(tags=["AI"])
 
-@router.post("/predict", response_model=StockPredictResponse)
-def predict_stock_api(request: StockPredictRequest):
-    return predict_stock(request)
+ai_service = AIService()
+
+@router.get(
+    "/predict/{symbol}",
+    response_model=StockPredictResponse
+)
+async def predict_stock_api(symbol: str):
+    return await ai_service.predict_stock(symbol)

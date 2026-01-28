@@ -2,18 +2,23 @@ from langchain_core.prompts import PromptTemplate
 
 STOCK_PROMPT = PromptTemplate(
     template="""
-You are a financial analyst.
+You are a crypto market analyst.
 
-Based on the following company news, predict the stock trend.
+Symbol: {symbol}
 
-Company news:
-{news}
+Technical summary (last 24h):
+{technical_summary}
 
-Return:
-- trend: UP, DOWN, or NEUTRAL
-- confidence: number between 0 and 1
-- reasoning: short explanation
+Your task:
+1. Predict short-term trend direction.
+2. Provide a concise causal analysis (2–3 sentences).
+
+Rules:
+- Trend must be one of: BULLISH, BEARISH, NEUTRAL
+- Do NOT mention indicators explicitly.
+- Focus on price action, momentum, volatility.
+
+{format_instructions}
 """,
-    input_variables=["news"],
+    input_variables=["symbol", "technical_summary"],
 )
-
