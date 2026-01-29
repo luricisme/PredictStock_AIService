@@ -40,6 +40,7 @@ class Settings(BaseSettings):
     # CALL APIS
     # =========================
     MARKET_SERVICE_API: str = "http://localhost:3001/api/v1"
+    CRAWLER_SERVICE_API: str = "http://localhost:8001/api/v1"
 
     # =========================
     # Pydantic Settings Config

@@ -9,6 +9,9 @@ Symbol: {symbol}
 Technical summary (last 24h):
 {technical_summary}
 
+Relevant Market News:
+{news_context}
+
 Your task:
 1. Predict short-term trend direction.
 2. Provide a concise causal analysis (2–3 sentences).
