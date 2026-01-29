@@ -1,18 +1,22 @@
-def filter_news_for_symbol(news_list: list[dict], symbol: str) -> list[str]:
-    """
-    Return list news text relevant to symbol
-    """
+from app.llm.chains.analyze_news_chain import analyze_news_chain
 
-    base_symbol = symbol.replace("USDT", "").lower()
 
-    relevant_news = []
+class NewsAIFilter:
 
-    for news in news_list:
-        text = f"{news.get('title', '')} {news.get('summary', '')}".lower()
+    def filter(self, news_list, symbol):
 
-        if base_symbol in text:
-            relevant_news.append(
-                f"- {news.get('title')} | {news.get('summary')}"
-            )
+        if not news_list:
+            return []
 
-    return relevant_news[:5]  # limit max 5 news
+        formatted_news = "\n".join([
+            f"{i+1}. {n.get('title')} | {n.get('summary')}"
+            for i, n in enumerate(news_list)
+        ])
+
+        result = analyze_news_chain.invoke({
+            "symbol": symbol,
+            "news_list": formatted_news
+        })
+
+        return result
+
